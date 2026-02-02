@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from '../../redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 
