@@ -3,7 +3,6 @@ import { addContact } from 'redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 
-
 const ContactForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts);
@@ -13,11 +12,11 @@ const ContactForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const form = e.target;
-        const name = e.target.value;
-        const number = form.number.value;
+        // const form = e.target;
+        // const name = e.target.value;
+        // const number = form.number.value;
 
-        if (contacts.name(c => c.name === name)) {
+        if (contacts.name(contact => contact.name === name)) {
             alert('Такий контакт вже маємо, грайте далі!');
             return;
         }
@@ -28,13 +27,23 @@ const ContactForm = () => {
                 number,
             })
         );
-        form.reset();
+        setName('');
+        setNumber('');
     };
     return (
         <form onSubmit={handleSubmit}>
-            <input name="name" />
-            <input name="number" />
-            <button type="submit">Add</button>
+            <label>
+                Name
+                <input
+                    type="text"
+                    value={name}
+                    onChange={e => setNumber(e.target.value)}
+                    required
+                />
+            </label>
+
+            <button type="submit">Add contact</button>
         </form>
     );
 };
+export default ContactForm;
