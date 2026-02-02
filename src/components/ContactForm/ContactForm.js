@@ -16,7 +16,7 @@ const ContactForm = () => {
         // const name = e.target.value;
         // const number = form.number.value;
 
-        if (contacts.name(contact => contact.name === name)) {
+        if (contacts.some(contact => contact.name === name)) {
             alert('Такий контакт вже маємо, грайте далі!');
             return;
         }
@@ -37,6 +37,15 @@ const ContactForm = () => {
                 <input
                     type="text"
                     value={name}
+                    onChange={e => setName(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Number
+                <input
+                    type="tel"
+                    value={number}
                     onChange={e => setNumber(e.target.value)}
                     required
                 />
