@@ -5,16 +5,13 @@ import { useState } from 'react';
 
 const ContactForm = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts);
-
+    const contacts = useSelector(state => state.contacts.items);
+    // console.log('contacts from store', contacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
-        // const form = e.target;
-        // const name = e.target.value;
-        // const number = form.number.value;
 
         if (contacts.some(contact => contact.name === name)) {
             alert('Такий контакт вже маємо, грайте далі!');
